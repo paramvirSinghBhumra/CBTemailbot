@@ -14,3 +14,6 @@ To run the program, simply type in the line of code below into terminal.
 python3 main.py yourcsvfile.csv
 '''
 
+
+### Want to learn more about the programmer at hand?
+[CHECK OUT THIS GITHUB ACCOUNT](https://github.com/paramvirSinghBhumra/)
