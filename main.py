@@ -115,9 +115,9 @@ def send_email(sender_email, password, receiver_email):
 
 
     #creates secure ssl default context for the mail
-    # context = ssl.create_default_context()
-    # context.check_hostname = False
-    # context.verify_mode = ssl.CERT_NONE
+    context = ssl.create_default_context()
+    context.check_hostname = False
+    context.verify_mode = ssl.CERT_NONE
     #with ... as server ensures that the connection is closed once we're done with the code here
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
         server.login(sender_email, password)
