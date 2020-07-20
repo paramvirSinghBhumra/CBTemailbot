@@ -33,8 +33,9 @@ pip3 install -r requirements.txt
 ## How can I run the program?
 To run the program, simply type in the line of code below into terminal
 ```bash
-python3 main.py yourcsvfile.csv
+python3 main.py
 ```
+
 
 
 ### Want to learn more about the programmer at hand?
