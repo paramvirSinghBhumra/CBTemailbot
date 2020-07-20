@@ -1,24 +1,16 @@
 def readfile(filename):
-    import smtplib, ssl, getpass, csv, os,sendgrid
-    from sendgrid.helpers.mail import Content, Email, Mail
+    pass
+
+def send_email(firstname="null", lastname='null', receiver_email='personaldeveloper9@gmail.com'):
+    import smtplib, ssl, getpass
     from email.mime.text import MIMEText
     from email.mime.multipart import MIMEMultipart
 
-    # sg = sendgrid.SendGridAPIClient(api_key=os.environ.get("SENDGRID_API_KEY"))
-    # from_email = Email("personaldeveloper9@gmail.com")
-    # to_email = Email(receiver_email)
-    # subject = "A test email from Sendgrid"
-    # content = Content("text/plain", "Here's a test email sent through Python")
-    # 
-    # mail = Mail(from_email, subject, to_email, content)
-    # response = sg.client.mail.send.post(request_body=mail.get())
-    # print(response.status_code)
-    # print(response.bodsy)
-    # print(response.headers)
-
     port = 465 #for SSl
     sender_email = 'personaldeveloper9@gmail.com'
-    password = getpass.getpass(prompt="enter your password: ")
+    # password = getpass.getpass(prompt="enter your password: ")
+    password = input("enter password: ")
+
 
     # message = """\
     #     Subject: Hi there
@@ -57,22 +49,10 @@ def readfile(filename):
     #creates secure ssl default context for the mail
     context = ssl.create_default_context()
     #with ... as server ensures that the connection is closed once we're done with the code here
-    with smtplib.SMTP_SSL('smtp.gmail.com', port, context=context) as server:
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
         server.login(sender_email, password)
         #TODO: SENT THE EMAIL HERE
         sever.sendmail(sender_email, receiver_email, message.as_string())
-
-    with open(filename) as file:
-        reader = csv.reader(file)
-        next(reader) #will skip the first row
-        for name, email, grade in reader:
-            print(f"Sending email to {email}")
-            server.sendmail(
-            sender_email,
-            email,
-            message.format(name=name, grade=grade),
-            )
-
 
 if __name__ == "__main__":
     #firstname, lastname, email = readfile("contacts_file.csv")
